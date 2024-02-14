@@ -1,6 +1,5 @@
-package app.security;
+package app.interfaces;
 
-import app.model.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -9,15 +8,13 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.crypto.SecretKey;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service
-public class JwtUtil {
+public class JwtInterface {
 
     private final String ISSUER = "ingesis.uniquindio.edu.co";
     @Value("${jwt.secret}")
@@ -45,12 +42,7 @@ public class JwtUtil {
     public boolean isTokenValid(String token, String username) {
         final String usernameToken = extractUsername(token);
         final String issuer = extractIssuer(token);
-        System.out.println(usernameToken);
-        System.out.println(issuer);
         return (usernameToken.equals(username) && issuer.equals("ingesis.uniquindio.edu.co"));
-    }
-    private boolean isTokenExpired(String token) {
-        return extractExpiration(token).before(new Date());
     }
 
     public String extractUsername(String token) {
