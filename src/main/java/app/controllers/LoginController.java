@@ -18,8 +18,12 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User user) {
-        if (user != null && !user.getUsername().isEmpty() && !user.getPassword().isEmpty()) {
-            String token = jwtUtil.generateToken(user.getUsername());
+
+        String username = user.getUsername();
+        String password = user.getPassword();
+
+        if (user != null && !username.isEmpty() && !password.isEmpty()) {
+            String token = jwtUtil.generateToken(username);
             return ResponseEntity.ok(token);
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Los atributos 'usuario' y 'clave' son obligatorios");

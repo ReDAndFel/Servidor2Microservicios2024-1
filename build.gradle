@@ -5,7 +5,7 @@ plugins {
 }
 group 'co.edu.uniquindio.proyecto'
 version '1.0-SNAPSHOT'
-description 'Breve descripción del proyecto'
+description 'Servidor de login y saludo'
 sourceCompatibility = '17'
 
 configurations {
