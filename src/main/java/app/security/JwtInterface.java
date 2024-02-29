@@ -1,4 +1,4 @@
-package app.interfaces;
+package app.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -60,9 +60,9 @@ public class JwtInterface {
                 .getBody();
 
     }
-    private Date extractExpiration(String token) {
+    /* Date extractExpiration(String token) {
         return extractAllClaims(token).getExpiration();
-    }
+    }*/
     private Key getSignInKey() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);

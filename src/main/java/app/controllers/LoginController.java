@@ -2,7 +2,8 @@ package app.controllers;
 
 
 import app.model.User;
-import app.interfaces.JwtInterface;
+import app.security.JwtInterface;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class LoginController {
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User user) {
 
-        String username = user.getUsername();
+        String username = user.getFirstName();
         String password = user.getPassword();
 
         if (user != null && !username.isEmpty() && !password.isEmpty()) {
